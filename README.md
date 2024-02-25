@@ -1,3 +1,8 @@
+## Content Management
+
+Content is managed as raw JSON data from: [JSON bin](https://jsonbin.io/app/bins).
+Icons for programming languages are from [DEVICON](https://devicon.dev/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

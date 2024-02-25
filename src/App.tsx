@@ -5,7 +5,7 @@ import { Header, Body } from "./components";
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="app-container bg-light-1">
       <Header />
       <Body />
     </div>
