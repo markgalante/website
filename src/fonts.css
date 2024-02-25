@@ -1,0 +1,9 @@
+@font-face {
+  font-family: heading-1;
+  src: url("./assets/fonts/RobotoMono-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: body-text;
+  src: url("./assets/fonts/IBMPlexSans-Light.ttf");
+}

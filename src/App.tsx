@@ -1,12 +1,13 @@
 import React from "react";
-import "./App.css";
+import "./App.style.css";
 
-import { Header } from "./components";
+import { Header, Body } from "./components";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app-container">
       <Header />
+      <Body />
     </div>
   );
 }

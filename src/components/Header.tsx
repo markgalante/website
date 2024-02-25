@@ -1,11 +1,14 @@
 import "./Header.style.css";
 
 import { LargeLogo } from "./LargeLogo";
+import { Section } from "./Section";
 
 export function Header() {
   return (
     <header className="header">
-      <LargeLogo />
+      <Section>
+        <LargeLogo />
+      </Section>
     </header>
   );
 }

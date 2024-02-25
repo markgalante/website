@@ -1,0 +1,14 @@
+<svg width="100%" height="100%" id="svg" viewBox="0 0 1440 490" xmlns="http://www.w3.org/2000/svg"
+    class="transition duration-300 ease-in-out delay-150">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="5%" stop-color="#ffe599"></stop>
+            <stop offset="95%" stop-color="#f5e7d6"></stop>
+        </linearGradient>
+    </defs>
+    <path
+        d="M 0,500 L 0,187 C 109.21428571428572,157.82142857142856 218.42857142857144,128.64285714285714 325,129 C 431.57142857142856,129.35714285714286 535.5,159.25 666,182 C 796.5,204.75 953.5714285714284,220.35714285714286 1087,220 C 1220.4285714285716,219.64285714285714 1330.2142857142858,203.32142857142856 1440,187 L 1440,500 L 0,500 Z"
+        stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
+        class="transition-all duration-300 ease-in-out delay-150 path-0"
+        transform="rotate(-180 720 200)"></path>
+</svg>
