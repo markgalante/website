@@ -1,7 +1,36 @@
+:root {
+  --black: #0a0908;
+  --navy: #22333b;
+  --cream: #f2f4f3;
+  --light-brown: #a9927d;
+  --secondary: #ced4da;
+  --brown: #5e503f;
+}
+
 .bg-light-1 {
-  background-color: #f5f4ee;
+  background-color: var(--light-brown);
 }
 
 .bg-light-2 {
-    background-color: #f6f4e6;
+  background-color: var(--cream);
+}
+
+.bg-dark-1 {
+  background-color: var(--black);
+}
+
+.bg-dark-2 {
+  background-color: var(--navy);
+}
+
+.font-dark {
+  color: var(--navy);
+}
+
+.font-secondary {
+  color: var(--secondary);
+}
+
+.font-light {
+  color: var(--cream);
 }

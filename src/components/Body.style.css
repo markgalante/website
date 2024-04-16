@@ -1,0 +1,67 @@
+.custom-shape-divider-top-1713099304 {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1713099304 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 118px;
+}
+
+.custom-shape-divider-top-1713099304 .shape-fill {
+  fill: var(--cream);
+}
+
+.sectioned-container-inner {
+  background-color: var(--navy);
+  border-radius: 15px;
+  padding: 1rem 2rem;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.work-experience-ordered-list {
+  position: relative;
+  list-style-type: none;
+}
+
+.work-experience-ordered-list::before {
+  content: "";
+  width: 2px;
+  height: calc(100% - 1em);
+  background-color: var(--light-brown);
+  position: absolute;
+  left: 22px;
+  top: 1em
+}
+
+.work-experience-list-item {
+  margin: 2em 0;
+  position: relative;
+}
+
+.work-experience-list-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.work-experience-list-item::after {
+  content: "\2022";
+  font-size: 2em;
+  color: var(--light-brown);
+  width: 2px;
+  position: absolute;
+  left: -22px;
+  bottom: 0;
+  height: 100%;
+}

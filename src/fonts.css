@@ -1,9 +1,14 @@
 @font-face {
   font-family: heading-1;
-  src: url("./assets/fonts/RobotoMono-SemiBold.ttf");
+  src: url("./assets/fonts/RobotoMono-Regular.ttf");
 }
 
 @font-face {
   font-family: body-text;
   src: url("./assets/fonts/IBMPlexSans-Light.ttf");
+}
+
+@font-face {
+  font-family: body-mono;
+  src: url("./assets/fonts/RobotoMono-ExtraLight.ttf");
 }

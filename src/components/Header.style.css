@@ -3,39 +3,5 @@
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-}
-
-@media (min-width: 1500px) {
-  .header {
-    height: 235px;
-    background-image: url("../assets/header-background-150.svg");
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1499px) {
-  .header {
-    height: 175px;
-    background-image: url("../assets/header-background-150.svg");
-  }
-}
-
-@media (min-width: 1050px) and (max-width: 1199px) {
-  .header {
-    height: 190px;
-    background-image: url("../assets/header-background-150.svg");
-  }
-}
-
-@media (min-width: 700px) and (max-width: 1049px) {
-  .header {
-    height: 200px;
-    background-image: url("../assets/header-background-240.svg");
-  }
-}
-
-@media (max-width: 699px) {
-  .header {
-    height: 190px;
-    background-image: url("../assets/header-background-300.svg");
-  }
+  background-color: var(--cream);
 }

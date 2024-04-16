@@ -1,7 +1,19 @@
-.heading1 {
+.heading-mono {
   font-family: heading-1;
+}
+
+.heading2-base {
+  margin: 6px 0;
 }
 
 .body {
   font-family: body-text;
+}
+
+.body-mono {
+  font-family: body-mono;
+}
+
+.base-body {
+  margin: 0;
 }

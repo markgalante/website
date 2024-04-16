@@ -2,7 +2,7 @@ type WorkExperience = {
   start: string;
   end?: string;
   title: string;
-  company?: string;
+  company: string;
   location: string;
   description: string;
   skills?: string[];

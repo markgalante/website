@@ -2,14 +2,14 @@ import * as React from "react";
 
 import type { CV } from "./cv.types";
 
-const backup = {
+export const backup = {
   record: {
     aboutMe:
       "Once a physiotherapist for 4.5 years, I traded the clinic for code, now a self-taught front-end developer crafting user-friendly experiences at Yoco Technologies with React and React Native. When I'm not building interfaces, you'll find me on the football pitch or geeking out over the latest sports stats. Let's connect – I'm always down for a chat about code, tech, or a lively sports debate!",
     workExperience: [
       {
-        start: "03-01-2017",
-        end: "31-12-2017",
+        start: "2017-01-03",
+        end: "2017-12-31",
         title: "Community Service Physiotherapist",
         company: "Western Cape Government Department of Health",
         location: "Matzikama Sub-District, Vredendal",
@@ -23,17 +23,17 @@ const backup = {
         ],
       },
       {
-        start: "08-01-2018",
-        end: "13-10-2021",
+        start: "2018-01-08",
+        end: "2021-10-13",
         title: "Physiotherapist",
-        compoany: "Physiopaedic and Lyle Diedericks Physiotherapists",
+        company: "Physiopaedic and Lyle Diedericks Physiotherapists",
         location: "Cape Town",
         description:
           "Private physiotherapist based in Life Vincent Pallotti hospital and Robin Trust sub-acute hospital. I also saw out-patients for post-op and general rehabilitation. An important skill learnt is being able to work and network with other health professionals in an interdisciplinary setting.",
         skills: ["Networking", "Rehabilitation"],
       },
       {
-        start: "18-10-2021",
+        start: "2021-10-18",
         title: "Frontend software engineer",
         company: "Yoco Technologies",
         location: "Cape Town",
@@ -100,9 +100,13 @@ export function DataProvider({
   value,
 }: {
   children: React.ReactNode;
-  value: CV;
+  value?: CV;
 }) {
-  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={value ?? backup}>
+      {children}
+    </DataContext.Provider>
+  );
 }
 
 export function useData(): CV["record"] {
