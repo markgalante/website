@@ -24,6 +24,7 @@ export function Body() {
       </div>
       <AboutMe />
       <WorkExperience />
+      <TechStack />
     </div>
   );
 }
@@ -32,12 +33,19 @@ interface SectionContainerProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
-  > {}
+  > {
+  title: string;
+}
 
-function SectionContainer({ children, ...props }: SectionContainerProps) {
+function SectionContainer({
+  children,
+  title,
+  ...props
+}: SectionContainerProps) {
   return (
     <div {...props}>
       <Section>
+        <Text.Header1>{title}</Text.Header1>
         <div className="sectioned-container-inner">{children}</div>
       </Section>
     </div>
@@ -47,8 +55,8 @@ function SectionContainer({ children, ...props }: SectionContainerProps) {
 function AboutMe() {
   const { aboutMe } = useData();
   return (
-    <SectionContainer>
-      <Text.Header1>About me</Text.Header1>
+    <SectionContainer title="About me">
+      {/* <Text.Header1>About me</Text.Header1> */}
       <Text.Body fontFamily="body-mono">{aboutMe}</Text.Body>
     </SectionContainer>
   );
@@ -59,8 +67,8 @@ function WorkExperience() {
   const ordered = [...workExperience];
 
   return (
-    <SectionContainer>
-      <Text.Header1>Work experience</Text.Header1>
+    <SectionContainer title="Work experience">
+      {/* <Text.Header1>Work experience</Text.Header1> */}
       <ol className="work-experience-ordered-list">
         {ordered.reverse().map((props, key) => {
           return <WorkExperienceListItem {...props} key={key} />;
@@ -98,5 +106,25 @@ function WorkExperienceListItem({
         <Text.Body>{description}</Text.Body>
       </div>
     </li>
+  );
+}
+
+function TechStack() {
+  const { languages } = useData();
+  return (
+    <SectionContainer title="Tech stack">
+      <div className="tech-stack-container">
+        {languages.map(({ img, name }, key) => {
+          return (
+            <div key={key} className="tech-stack-item">
+              <img height={48} src={img} alt={name} title={name} />
+              <Text.Tiny align="center" fontFamily="body-mono">
+                {name}
+              </Text.Tiny>
+            </div>
+          );
+        })}
+      </div>
+    </SectionContainer>
   );
 }

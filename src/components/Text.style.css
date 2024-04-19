@@ -17,3 +17,15 @@
 .base-body {
   margin: 0;
 }
+
+.text-tiny {
+  font-size: 14px;
+}
+
+.align-start {
+  text-align: start;
+}
+
+.align-center {
+  text-align: center;
+}
