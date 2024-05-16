@@ -33,7 +33,8 @@ export function Form({
     values: FormikValues,
     formikHelpers: FormikHelpers<FormikValues>
   ) => {
-    onSubmit(values, formikHelpers);
+    await onSubmit(values, formikHelpers);
+    formikHelpers.setSubmitting(false);
   };
   return (
     <Formik<FormikValues>
@@ -109,17 +110,19 @@ interface SubmitButtonProps
   > {}
 
 export function SubmitButton(props: SubmitButtonProps) {
-  const { isValid, isValidating } = useFormikContext();
-  console.log({ isValid, isValidating });
+  const { isValid, dirty, isSubmitting } = useFormikContext();
+  const disabled = !isValid || !dirty || isSubmitting;
+
   return (
     <div>
       <input
         type="submit"
         {...props}
         className={`submit-button-base ${
-          isValid ? "submit-button" : "disabled"
+          disabled ? "disabled" : "submit-button"
         }`}
-        disabled={isValid}
+        disabled={disabled}
+        value={isSubmitting ? "Sending" : props.value}
       />
     </div>
   );

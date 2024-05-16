@@ -7,6 +7,8 @@ import { Section } from "./Section";
 import { useData } from "../useData";
 import { DateTime } from "luxon";
 import { Form, InputField, SubmitButton } from "./Form";
+import { sendEmail } from "../services/emailjs";
+import { useFormikContext } from "formik";
 
 export function Body() {
   return (
@@ -132,6 +134,27 @@ function TechStack() {
   );
 }
 
+function useLocalBooleanStorage() {
+  const set = (key: string, value: boolean) => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  };
+  const get = (key: string) => {
+    const res = window.localStorage.getItem(key);
+    try {
+      if (!res) {
+        return;
+      }
+      return JSON.parse(res);
+    } catch (_) {
+      return res;
+    }
+  };
+  return {
+    set,
+    get,
+  };
+}
+
 const validationSchema = Yup.object({
   emailAddress: Yup.string()
     .email("Enter a valid email address")
@@ -139,34 +162,49 @@ const validationSchema = Yup.object({
   emailBody: Yup.string().required("Required"),
 });
 
+const HAS_SENT_BOOLEAN_KEY = "has-sent-email";
+
 function MessageMe() {
+  const [sent, setSent] = React.useState<boolean>(false);
+  const { get, set } = useLocalBooleanStorage();
+
+  React.useEffect(() => {
+    if (get(HAS_SENT_BOOLEAN_KEY)) {
+      setSent(true);
+    } else {
+      setSent(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleSubmit = async (values: any) => {
-    console.log(">>> SUBMIT!");
-    setTimeout(() => {
-      alert(JSON.stringify(values));
-    }, 500);
+    await sendEmail(values);
+    set(HAS_SENT_BOOLEAN_KEY, true);
+    setSent(true);
   };
-  return (
-    <SectionContainer title="Get in touch">
-      <Form
-        onSubmit={handleSubmit}
-        initialValues={{ emailAddress: "", emailBody: "" }}
-        validationSchema={validationSchema}
-      >
-        <InputField.Email
-          name="emailAddress"
-          label="Email address"
-          placeholder="joe@example.com"
-          required
-        />
-        <InputField.TextArea
-          name="emailBody"
-          label="Message"
-          placeholder="enter your message here"
-          required
-        />
-        <SubmitButton value="Send" />
-      </Form>
-    </SectionContainer>
-  );
+  if (!sent) {
+    return (
+      <SectionContainer title="Get in touch">
+        <Form
+          onSubmit={handleSubmit}
+          initialValues={{ emailAddress: "", emailBody: "" }}
+          validationSchema={validationSchema}
+        >
+          <InputField.Email
+            name="emailAddress"
+            label="Email address"
+            placeholder="joe@example.com"
+            required
+          />
+          <InputField.TextArea
+            name="emailBody"
+            label="Message"
+            placeholder="enter your message here"
+            required
+          />
+          <SubmitButton value="Send" />
+        </Form>
+      </SectionContainer>
+    );
+  }
 }
