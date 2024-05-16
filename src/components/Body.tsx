@@ -1,10 +1,12 @@
 import * as React from "react";
 import "./Body.style.css";
+import * as Yup from "yup";
 
 import { Text } from "./Text";
 import { Section } from "./Section";
 import { useData } from "../useData";
 import { DateTime } from "luxon";
+import { Form, InputField, SubmitButton } from "./Form";
 
 export function Body() {
   return (
@@ -25,6 +27,7 @@ export function Body() {
       <AboutMe />
       <WorkExperience />
       <TechStack />
+      <MessageMe />
     </div>
   );
 }
@@ -125,6 +128,45 @@ function TechStack() {
           );
         })}
       </div>
+    </SectionContainer>
+  );
+}
+
+const validationSchema = Yup.object({
+  emailAddress: Yup.string()
+    .email("Enter a valid email address")
+    .required("Required"),
+  emailBody: Yup.string().required("Required"),
+});
+
+function MessageMe() {
+  const handleSubmit = async (values: any) => {
+    console.log(">>> SUBMIT!");
+    setTimeout(() => {
+      alert(JSON.stringify(values));
+    }, 500);
+  };
+  return (
+    <SectionContainer title="Get in touch">
+      <Form
+        onSubmit={handleSubmit}
+        initialValues={{ emailAddress: "", emailBody: "" }}
+        validationSchema={validationSchema}
+      >
+        <InputField.Email
+          name="emailAddress"
+          label="Email address"
+          placeholder="joe@example.com"
+          required
+        />
+        <InputField.TextArea
+          name="emailBody"
+          label="Message"
+          placeholder="enter your message here"
+          required
+        />
+        <SubmitButton value="Send" />
+      </Form>
     </SectionContainer>
   );
 }

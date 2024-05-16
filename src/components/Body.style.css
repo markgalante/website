@@ -79,3 +79,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
