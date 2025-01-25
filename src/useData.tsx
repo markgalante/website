@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import type { CV } from "./cv.types";
+import type { CV, SocialMediaPlatform } from "./cv.types";
 
 export const backup = {
   record: {
     aboutMe:
-      "Once a physiotherapist for 4.5 years, I traded the clinic for code, now a self-taught front-end developer crafting user-friendly experiences at Yoco Technologies with React and React Native. When I'm not building interfaces, you'll find me on the football pitch or geeking out over the latest sports stats. Let's connect – I'm always down for a chat about code, tech, or a lively sports debate!",
+      "A South African in Amsterdam. Once a physiotherapist for 4.5 years, I traded the clinic for code, now a self-taught front-end developer crafting user-friendly experiences at Yoco Technologies with React and React Native. When I'm not messing around with some code, I'm (trying) running, playing football or watching sport. Let's connect – I'm always down for a chat about code, tech, or a lively sports debate!",
     workExperience: [
       {
         start: "2017-01-03",
@@ -82,6 +82,26 @@ export const backup = {
       {
         name: "Jest",
         img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
+      },
+    ],
+    contact: [
+      {
+        platform: "linkedin" as SocialMediaPlatform,
+        link: "https://www.linkedin.com/in/mark-galante/",
+        img: "linkedin.png",
+        alt: "LinkedIn",
+      },
+      {
+        platform: "github" as SocialMediaPlatform,
+        link: "https://github.com/markgalante",
+        img: "github.png",
+        alt: "GitHub",
+      },
+      {
+        platform: "email" as SocialMediaPlatform,
+        link: "mailto:mark.galante.14@gmail.com",
+        img: "email.png",
+        alt: "Email",
       },
     ],
   },

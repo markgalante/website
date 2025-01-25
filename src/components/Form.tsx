@@ -9,6 +9,7 @@ import {
   FieldHookConfig,
   FormikConfig,
   useFormikContext,
+  useFormik,
 } from "formik";
 import * as React from "react";
 
@@ -63,9 +64,11 @@ function generateFormField(
   return function GenericFormField({
     label,
     placeholder,
+    disabled,
     ...props
   }: GenericInputProps) {
     const [field, meta, helper] = useField(props);
+    const { isSubmitting } = useFormikContext();
     return (
       <div className="form-field-container">
         <Text.Body>{label}</Text.Body>
@@ -74,6 +77,7 @@ function generateFormField(
           {...field}
           {...meta}
           {...helper}
+          disabled={disabled ?? isSubmitting}
           placeholder={placeholder}
           as={customFormField}
           className="input-field"

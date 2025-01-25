@@ -1,0 +1,31 @@
+.button-base {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button-disabled {
+  opacity: 0.7; /* Lower opacity for disabled state */
+  background-color: #ddd; /* Lighter color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate non-clickable */
+}
+
+.button-base {
+  background-color: white; /* A contrasting color for the button */
+  color: #3f577a;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: start;
+}
+
+.button-active-effects:active {
+  background-color: #d2d2d2; /* Slightly darker shade on active */
+  opacity: 0.8; /* Reduce opacity to indicate button press */
+}
+
+.button-active-effects:hover {
+  background-color: #3f577a; /* Lighter shade on hover */
+  color: white;
+}

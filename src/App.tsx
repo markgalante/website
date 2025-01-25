@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.style.css";
 import { useQuery } from "@tanstack/react-query";
 
-import { Header, Body } from "./components";
+import { Header, Body, Footer } from "./components";
 import { DataProvider, backup } from "./useData";
 import type { CV } from "./cv.types";
 
@@ -42,6 +42,7 @@ function App() {
       <Header />
       <DataProvider value={data ?? backup}>
         <Body />
+        <Footer />
       </DataProvider>
     </div>
   );

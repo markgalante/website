@@ -8,7 +8,7 @@ import { useData } from "../useData";
 import { DateTime } from "luxon";
 import { Form, InputField, SubmitButton } from "./Form";
 import { sendEmail } from "../services/emailjs";
-import { useFormikContext } from "formik";
+import { Button } from "./Button";
 
 export function Body() {
   return (
@@ -51,7 +51,9 @@ function SectionContainer({
     <div {...props}>
       <Section>
         <Text.Header1>{title}</Text.Header1>
-        <div className="sectioned-container-inner">{children}</div>
+        <div className="sectioned-container-inner">
+          <div className={props.className}>{children}</div>
+        </div>
       </Section>
     </div>
   );
@@ -61,7 +63,6 @@ function AboutMe() {
   const { aboutMe } = useData();
   return (
     <SectionContainer title="About me">
-      {/* <Text.Header1>About me</Text.Header1> */}
       <Text.Body fontFamily="body-mono">{aboutMe}</Text.Body>
     </SectionContainer>
   );
@@ -73,7 +74,6 @@ function WorkExperience() {
 
   return (
     <SectionContainer title="Work experience">
-      {/* <Text.Header1>Work experience</Text.Header1> */}
       <ol className="work-experience-ordered-list">
         {ordered.reverse().map((props, key) => {
           return <WorkExperienceListItem {...props} key={key} />;
@@ -167,6 +167,10 @@ const HAS_SENT_BOOLEAN_KEY = "has-sent-email";
 function MessageMe() {
   const [sent, setSent] = React.useState<boolean>(false);
   const { get, set } = useLocalBooleanStorage();
+  const resetSentState = () => {
+    set(HAS_SENT_BOOLEAN_KEY, false);
+    setSent(false);
+  };
 
   React.useEffect(() => {
     if (get(HAS_SENT_BOOLEAN_KEY)) {
@@ -204,6 +208,17 @@ function MessageMe() {
           />
           <SubmitButton value="Send" />
         </Form>
+      </SectionContainer>
+    );
+  } else {
+    return (
+      <SectionContainer title="Get in touch" className="sent-message-container">
+        <Text.Header2>Message sent</Text.Header2>
+        <div style={{ paddingBottom: 20 }}>
+          <Text.Body>Thanks for getting in touch!</Text.Body>
+          <Text.Body>I'll get back to you as soon as I can.</Text.Body>
+        </div>
+        <Button onClick={resetSentState}>Send another message</Button>
       </SectionContainer>
     );
   }

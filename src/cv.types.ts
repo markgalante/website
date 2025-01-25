@@ -13,10 +13,21 @@ type Language = {
   img: string;
 };
 
+export type SocialMediaPlatform =
+  | "linkedin"
+  | "github"
+  | "email";
+
 type CoreData = {
   aboutMe: string;
   workExperience: WorkExperience[];
   languages: Language[];
+  contact: Array<{
+    platform: SocialMediaPlatform;
+    img: string;
+    alt: string;
+    link: string;
+  }>;
 };
 
 type Metadata = {
