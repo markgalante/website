@@ -10,6 +10,8 @@ import { Form, InputField, SubmitButton } from "./Form";
 import { sendEmail } from "../services/emailjs";
 import { Button } from "./Button";
 
+const TEMP_EMAIL_FLAG = false;
+
 export function Body() {
   return (
     <div className="body-container">
@@ -29,7 +31,7 @@ export function Body() {
       <AboutMe />
       <WorkExperience />
       <TechStack />
-      <MessageMe />
+      {TEMP_EMAIL_FLAG ? <MessageMe /> : null}
     </div>
   );
 }
