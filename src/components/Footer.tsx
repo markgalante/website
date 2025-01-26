@@ -11,7 +11,7 @@ import "./Footer.styles.css";
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{paddingBottom: 14}}>
       <Flex alignItems="center" flexDirection="column">
         <Text.Tiny fontFamily="body-mono" color="dark">
           &copy; Mark Galante, 2025
